@@ -1,9 +1,8 @@
-const Address = require("../models/Address");
 const Tech = require("../models/Tech");
 const User = require("../models/User");
 
 module.exports = {
-  async index(req, res) {},
+  //   async index(req, res) {},
 
   async store(req, res) {
     const { user_id } = req.params;

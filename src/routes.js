@@ -13,7 +13,7 @@ routes.get("/users", UserController.index);
 routes.get("/users/:user_id/addresses", AddressController.index);
 routes.post("/users/:user_id/addresses", AddressController.store);
 
-routes.get("/users/:user_id/techs", TechController.index);
+//routes.get("/users/:user_id/techs", TechController.index);
 routes.post("/users/:user_id/techs", TechController.store);
 
 module.exports = routes;

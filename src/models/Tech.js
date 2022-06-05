@@ -9,6 +9,8 @@ class Tech extends Model {
       {
         sequelize: connection, // ou sequelize apenas, desde
         // que esteja static init(sequelize)
+        tableName: "techs", /// forcando para evitar a pluralização do sequelize
+        ///  que colocaria como 'teches'
       }
     );
   }
