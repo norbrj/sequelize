@@ -7,11 +7,11 @@ module.exports = {
     // Desses usuarios eu quero buscar todos que moram na rua "teste"
     // Desses usuario eu quero buscar as tecnologias que começam com React
 
-    const user = await User.findAll({
+    const users = await User.findAll({
       attributes: ["name", "email"],
       where: {
         email: {
-          [Op.ilike]: "@gmail.com",
+          [Op.like]: "%@gmail.com",
         },
       },
       include: [
@@ -21,11 +21,12 @@ module.exports = {
           requeired: false,
           where: {
             name: {
-              [Op.ilike]: "React%",
+              [Op.like]: "React.js",
             },
           },
         },
       ],
     });
+    return res.json(users);
   },
 };
