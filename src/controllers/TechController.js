@@ -26,6 +26,8 @@ module.exports = {
     const { user_id } = req.params;
     const { name } = req.body;
 
+    //     res.header("Access-Control-Allow-Origin", "*");
+
     const user = await User.findByPk(user_id);
 
     if (!user) {

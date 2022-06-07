@@ -9,7 +9,9 @@ const LoginController = require("./controllers/LoginController");
 
 const routes = express.Router();
 
+// routes.head("Access-Control-Allow-Origin:*");
 routes.get("/criar", LoginController.index);
+
 routes.post("/criar", LoginController.store);
 
 routes.post("/users", UserController.store);

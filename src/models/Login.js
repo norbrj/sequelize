@@ -10,6 +10,7 @@ class Login extends Model {
       {
         sequelize: connection, // ou sequelize apenas, desde
         // que esteja static init(sequelize)
+        tableName: "login",
       }
     );
   }
