@@ -3,20 +3,35 @@ const AddressController = require("./controllers/AddressControler");
 const UserController = require("./controllers/UserController");
 const TechController = require("./controllers/TechController");
 const ReportController = require("./controllers/ReportController");
-const LoginController = require("./controllers/LoginController");
-
-// const { routes } = require("express/lib/application");
+const CriaLoginController = require("./controllers/CriaLoginController");
+const AutorizaLoginController = require("./controllers/AutorizaController");
 
 const routes = express.Router();
+var jwt = require("jsonwebtoken");
 
-// routes.head("Access-Control-Allow-Origin:*");
-routes.get("/criar", LoginController.index);
+function verifyJWT(req, res, next) {
+  const token = req.headers["x-access-token"];
+  if (!token)
+    return res.status(401).json({ auth: false, message: "No token provided." });
 
-routes.post("/criar", LoginController.store);
+  jwt.verify(token, "70conectar", function (err, decoded) {
+    if (err)
+      return res
+        .status(500)
+        .json({ auth: false, message: "Failed to authenticate token." });
+
+    // se tudo estiver ok, salva no request para uso posterior
+    req.userId = decoded.id;
+    next();
+  });
+}
+routes.get("/login", AutorizaLoginController.index);
+
+routes.post("/criar", CriaLoginController.store);
 
 routes.post("/users", UserController.store);
 
-routes.get("/users", UserController.index);
+routes.get("/users", verifyJWT, UserController.index);
 
 routes.get("/users/:user_id/addresses", AddressController.index);
 routes.post("/users/:user_id/addresses", AddressController.store);
