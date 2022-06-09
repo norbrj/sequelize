@@ -5,6 +5,7 @@ const TechController = require("./controllers/TechController");
 const ReportController = require("./controllers/ReportController");
 const CriaLoginController = require("./controllers/CriaLoginController");
 const AutorizaLoginController = require("./controllers/AutorizaController");
+const CpfController = require("./controllers/CpfController");
 
 const routes = express.Router();
 var jwt = require("jsonwebtoken");
