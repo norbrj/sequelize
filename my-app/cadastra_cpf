@@ -1,0 +1,35 @@
+CREATE OR REPLACE FUNCTION public.cadastra_cpf(_nome character varying, _cpf character varying, _email character varying)
+ RETURNS character varying
+ LANGUAGE plpgsql
+AS $function$
+DECLARE 
+    _cpfX character varying;
+    _cpfP character varying;
+    _token character varying;
+
+BEGIN
+
+    select into _token md5(random()::text)||'-'||md5(random()::text);
+    
+    select into _cpfP cpf from pessoa where cpf=_cpf;
+
+    if _cpfP is null then 
+        INSERT INTO public.pessoa(cpf, nome, rg, emissor, data_nascimento, nome_social, email,created_at,updated_at) VALUES (_cpf, _nome,'', '', now(),_nome, _email,now(),now());
+    else
+        UPDATE public.pessoa SET nome=_nome, nome_social=_nome, email=_email WHERE cpf=_cpf;
+     end if;
+        
+    select into _cpfX trim(cpf) from token where trim(cpf)=trim(_cpf);
+        
+    if _cpfX is null then 
+        INSERT INTO public.token(cpf, token,created_at,updated_at) VALUES (_cpf, _token,now(),now());
+        return _token;
+    else
+        UPDATE public.token SET  token=_token  WHERE cpf=_cpf;
+        return 1;
+    end if;
+
+END;
+$function$
+
+
