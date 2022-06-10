@@ -5,7 +5,8 @@ const User = require("../models/User");
 const Address = require("../models/Address");
 const Tech = require("../models/Tech");
 const Login = require("../models/Login");
-const Cpf = require("../models/Cpf");
+const Pessoa = require("../models/Pessoa");
+const Token = require("../models/Token");
 
 const connection = new Sequelize(dbConfig);
 
@@ -13,7 +14,8 @@ User.init(connection);
 Address.init(connection);
 Tech.init(connection);
 Login.init(connection);
-Cpf.init(connection);
+Pessoa.init(connection);
+Token.init(connection);
 
 User.associate(connection.models);
 Address.associate(connection.models);
