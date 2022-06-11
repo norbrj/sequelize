@@ -25,8 +25,8 @@ function ResetSenha(){
 
     return <div className="d-flex align-items-center text-center form-container">
       <form className="form-signin">
-        <img className="mb-4" src="/Images/logo-small2.png" alt="" />
-        <h1 className="h3 mb-3 fw-normal">Recuperar Senha</h1>
+      <img className="mb-2 w-100" src="/Images/logo-small2.png" alt="" />
+        <h1 className="h4 mb-3 fw-normal">Recuperar Senha</h1>
 
         <div className="form-floating">
           <input onChange={(e) => setEmail(e.target.value)} type="email" className="form-control" id="floatingInput" placeholder="E-mail" />
@@ -42,7 +42,7 @@ function ResetSenha(){
           <Link to="/app/novaconta" className="mx-3">Criar uma conta.</Link>
         </div>
 
-        <p className="mt-5 mb-3 text-muted">&copy; Desenvolvido por 99 Coders</p>
+        <p className="mt-5 mb-3 text-muted">&copy; CSC - Sistema</p>
       </form>
     </div>
   }

@@ -40,7 +40,7 @@ function NovoCliente(){
         <Navbar/>
         <div className="container-fluid titulo">
 
-          <div className="offset-lg-3 col-lg-6">
+          <div className="mb-4 offset-lg-3 col-lg-6">
             <h1>Novo Cliente</h1>
             <form>
               <div className="mb-3">
