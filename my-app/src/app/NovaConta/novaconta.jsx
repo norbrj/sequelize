@@ -1,13 +1,13 @@
+
 import React, {useState} from 'react';
 import {Link, Redirect}  from 'react-router-dom';
 import './novaconta.css';
 const axios = require('axios');
 // const Cors= require('cors');
 
-
 const instance = axios.create({
   baseURL: 'http://localhost:3333/',
-  timeout: 1000,
+  // timeout: 1000,
   headers: {'X-Custom-Header': 'foobar'}
 });
 
@@ -28,14 +28,24 @@ function NovaConta(){
       return;
     }
     try {
-      const response = await instance.post('/acesso',{
+      const meutoken = await instance.post('/acesso',{
        
           nome: Nome,
           cpf : CPF,
           email : email
         
       });
-      console.log(response);
+      console.log(meutoken);
+      const sendmail = await instance.post('/sendmail',{
+       
+        nome: Nome,
+        email : email,
+        chave : meutoken.data.token[0].cadastra_cpf
+      
+    });
+
+
+
     } catch (error) {
       console.error(error);
     }
@@ -77,10 +87,23 @@ function NovaConta(){
         <img className="mb-2 w-100" src="/Images/logo-small2.png" alt="" />
         <h1 className="h4 mb-3 fw-normal">Criar Conta</h1>
 
+            {/* <div className="form-floating">
+              <input type="email" onChange={(e) => setEmail(e.target.value)} className="form-control" placeholder="E-mail" aria-describedby="emailHelp"/>
+              <label for="exampleInputEmail1" htmlFor="floatingInput">E-mail</label>
+              <div id="emailHelp" class="form-text">
+                Utilize aqui seu melhor email.</div>
+            </div> */}
+            <div className="form-floating"> 
+              <label htmlFor="exampleInputEmail1" >Email address</label>
+              <input type="email" className="form-control" required name="email"/>
+              
+             </div> 
             <div className="form-floating">
-              <input onChange={(e) => setEmail(e.target.value)} type="email" className="form-control" id="floatingInput" placeholder="E-mail" />
-              <label htmlFor="floatingInput">E-mail</label>
+              <input type="password" onChange={(e) => setEmail(e.target.value)} className="form-control" id="inputPassword5" placeholder="Password" />
+              
+              <label htmlFor="inputPassword5">Password</label>
             </div>
+
             <div className="form-floating">
               <input onChange={(e) => setCPF(e.target.value)} type="text" className=" form-control" id="floatingInput" placeholder="CPF" />
               <label htmlFor="floatingInput">CPF</label>

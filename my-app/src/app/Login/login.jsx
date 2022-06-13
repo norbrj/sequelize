@@ -42,12 +42,14 @@ function Login(){
         <h1 className="h4 mb-3 fw-normal">Login</h1>
 
         <div className="form-floating">
-          <input onChange={alterarEmail} type="email" className="form-control" id="floatingInput" placeholder="E-mail" />
-          <label htmlFor="floatingInput">E-mail</label>
+          <input onChange={alterarEmail} type="email" className="form-control" id="emailcadastro floatingInput" placeholder="E-mail" aria-describedby="emailHelp" />
+          <label fpr="emailcadastro" htmlFor="floatingInput">E-mail</label>
+          <div id="emailHelp" class="form-text">Entre seu principal email.</div>
+  
         </div>
 
         <div className="form-floating">
-          <input onChange={alterarSenha} type="password" className="form-control" id="floatingPassword" placeholder="Senha" />
+          <input onChange={alterarSenha} type="password" className="form-control" id="show_hide_password floatingPassword" placeholder="Senha" />
           <label htmlFor="floatingPassword">Senha</label>
         </div>
         

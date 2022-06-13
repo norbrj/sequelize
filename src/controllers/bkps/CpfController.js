@@ -11,6 +11,7 @@ export const addAcesso = async (req, res) => {
       }
     );
     res.json(records[0]);
+    // res.json(records[0]);
   } catch (error) {
     res.json({ message: error.message });
   }

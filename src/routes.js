@@ -1,11 +1,13 @@
 const express = require("express");
-const AddressController = require("./controllers/AddressControler");
-const UserController = require("./controllers/UserController");
-const TechController = require("./controllers/TechController");
-const ReportController = require("./controllers/ReportController");
-const CriaLoginController = require("./controllers/CriaLoginController");
-const AutorizaLoginController = require("./controllers/AutorizaController");
+// const AddressController = require("./controllers/bkps/AddressControler");
+// const UserController = require("./controllers/UserController");
+// const TechController = require("./controllers/TechController");
+// const ReportController = require("./controllers/ReportController");
+// const CriaLoginController = require("./controllers/CriaLoginController");
+// const AutorizaLoginController = require("./controllers/AutorizaController");
+
 const PessoaController = require("./controllers/PessoaController");
+const sendEmail = require("./controllers/sendEmail");
 
 const routes = express.Router();
 var jwt = require("jsonwebtoken");
@@ -26,22 +28,24 @@ function verifyJWT(req, res, next) {
     next();
   });
 }
-routes.get("/login", AutorizaLoginController.index);
+// routes.get("/login", AutorizaLoginController.index);
 
-routes.post("/criar", CriaLoginController.store);
+// routes.post("/criar", CriaLoginController.store);
+
 routes.post("/acesso", PessoaController.store);
+routes.post("/sendmail", sendEmail.sendEmail);
 
-routes.post("/users", UserController.store);
+// routes.post("/users", UserController.store);
 
-routes.get("/users", verifyJWT, UserController.index);
+// routes.get("/users", verifyJWT, UserController.index);
 
-routes.get("/users/:user_id/addresses", AddressController.index);
-routes.post("/users/:user_id/addresses", AddressController.store);
+// routes.get("/users/:user_id/addresses", AddressController.index);
+// routes.post("/users/:user_id/addresses", AddressController.store);
 
-routes.get("/users/:user_id/techs", TechController.index);
-routes.post("/users/:user_id/techs", TechController.store);
-routes.delete("/users/:user_id/techs", TechController.delete);
+// routes.get("/users/:user_id/techs", TechController.index);
+// routes.post("/users/:user_id/techs", TechController.store);
+// routes.delete("/users/:user_id/techs", TechController.delete);
 
-routes.get("/report", ReportController.show);
+// routes.get("/report", ReportController.show);
 
 module.exports = routes;
