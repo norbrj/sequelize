@@ -87,22 +87,14 @@ function NovaConta(){
         <img className="mb-2 w-100" src="/Images/logo-small2.png" alt="" />
         <h1 className="h4 mb-3 fw-normal">Criar Conta</h1>
 
-            {/* <div className="form-floating">
+          <div className="form-floating">
               <input type="email" onChange={(e) => setEmail(e.target.value)} className="form-control" placeholder="E-mail" aria-describedby="emailHelp"/>
               <label for="exampleInputEmail1" htmlFor="floatingInput">E-mail</label>
               <div id="emailHelp" class="form-text">
                 Utilize aqui seu melhor email.</div>
-            </div> */}
-            <div className="form-floating"> 
-              <label htmlFor="exampleInputEmail1" >Email address</label>
-              <input type="email" className="form-control" required name="email"/>
-              
-             </div> 
-            <div className="form-floating">
-              <input type="password" onChange={(e) => setEmail(e.target.value)} className="form-control" id="inputPassword5" placeholder="Password" />
-              
-              <label htmlFor="inputPassword5">Password</label>
-            </div>
+            </div> 
+            
+         
 
             <div className="form-floating">
               <input onChange={(e) => setCPF(e.target.value)} type="text" className=" form-control" id="floatingInput" placeholder="CPF" />
